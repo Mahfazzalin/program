@@ -1,18 +1,21 @@
-# importing whole module
 from tkinter import *
 from tkinter.ttk import *
 from datetime import datetime
 
-# creating tkinter window
 root = Tk()
-root.geometry("300x80")
-root.overrideredirect(True)  # remove title bar
+
+# Set transparency (alpha) value for the window (0: fully transparent, 1: fully opaque)
+root.attributes('-alpha', 0.1)  # You can adjust the value to your desired transparency level
+
+# Remove the title bar
+root.overrideredirect(True)
 
 # Create a style object
 style = Style()
-
-# Set the background color for the Frame
 style.configure("Custom.TFrame", background="darkgreen")
+
+# Rest of your code remains unchanged...
+
 
 def mahftime():
     dt = datetime.now()

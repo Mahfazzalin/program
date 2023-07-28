@@ -1,18 +1,20 @@
-# importing whole module
 from tkinter import *
 from tkinter.ttk import *
 from datetime import datetime
 
-# creating tkinter window
 root = Tk()
-root.geometry("277x91")
-root.overrideredirect(True)  # remove title bar
+
+# Set transparency (alpha) value for the window (0: fully transparent, 1: fully opaque)
+root.attributes('-alpha', 0.9)  # You can adjust the value to your desired transparency level
+
+# Remove the title bar
+root.overrideredirect(True)
 
 # Create a style object
 style = Style()
-
-# Set the background color for the Frame
 style.configure("Custom.TFrame", background="#454545")
+
+# Rest of your code remains unchanged...
 
 
 def move_app(e):
@@ -68,9 +70,10 @@ def mahftime():
 
 # Styling the label widget so that clock
 # will look more attractive
-lbl = Label(root, font=('calibri', 40, 'bold'),
+lbl = Label(root, font=('calibri', 39, 'bold'),
             background='#454545',
-            foreground='#A1CCD1')
+            foreground='#A1CCD1',
+            padding=3)
 
 # Placing clock at the center
 # of the tkinter window
