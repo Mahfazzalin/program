@@ -1,11 +1,12 @@
-from tkinter import *
+import tkinter as tk
 from tkinter.ttk import *
 from datetime import datetime
+import win32gui
 
-root = Tk()
+root = tk.Tk()
 
-# Set transparency (alpha) value for the window (0: fully transparent, 1: fully opaque)
-root.attributes('-alpha', 0.1)  # You can adjust the value to your desired transparency level
+# Make the window transparent
+root.wm_attributes("-transparentcolor", "darkgreen")
 
 # Remove the title bar
 root.overrideredirect(True)
@@ -13,6 +14,8 @@ root.overrideredirect(True)
 # Create a style object
 style = Style()
 style.configure("Custom.TFrame", background="darkgreen")
+
+# Rest of your code remains unchanged...
 
 # Rest of your code remains unchanged...
 
