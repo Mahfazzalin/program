@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>MahfTime</title>
+  <!-- Include Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* Custom styling for title bar */
+    .title-bar {
+      background-color: #454545;
+      color: #A1CCD1;
+      font-weight: bold;
+      padding: 4px;
+      user-select: none;
+      -webkit-app-region: drag;
+    }
+
+    /* Styling for close button */
+    .close-button {
+      cursor: pointer;
+      border: 0.5px solid #A1CCD1;
+      padding: 3px;
+    }
+
+    /* Styling for the clock label */
+    .clock-label {
+      font-size: 40px;
+      font-family: Calibri, sans-serif;
+      font-weight: bold;
+      background-color: #454545;
+      color: #A1CCD1;
+      padding: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Title bar -->
+  <div class="title-bar" id="title-bar">
+    MahfTime
+    <!-- Close button -->
+    <span class="close-button" onclick="quitApp()">c</span>
+  </div>
+
+  <!-- Clock label -->
+  <div class="clock-label" id="clock-label"></div>
+
+  <!-- Include Bootstrap and jQuery JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    // Function to update the clock time
+    function updateTime() {
+      const now = new Date();
+      let hour = now.getHours();
+      let minute = now.getMinutes();
+      let ltnt = "night";
+
+      if (hour >= 7 && hour <= 24) {
+        let mahfhour = hour - 6;
+        if (mahfhour > 12) {
+          mahfhour -= 12;
+          ltnt = "night";
+        } else {
+          ltnt = "light";
+        }
+      } else {
+        let mahfhour = hour + 24 - 18;
+        ltnt = "night";
+      }
+
+      // Format the time and update the label
+      const time = mahfhour + ":" + (minute < 10 ? "0" + minute : minute) + " " + ltnt;
+      document.getElementById("clock-label").textContent = time;
+    }
+
+    // Function to quit the application (placeholder)
+    function quitApp() {
+      console.log("Quitting the application...");
+    }
+
+    // Set the initial time
+    updateTime();
+
+    // Update the time every second
+    setInterval(updateTime, 1000);
+  </script>
+</body>
+
+</html>

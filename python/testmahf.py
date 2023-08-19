@@ -6,42 +6,18 @@ import win32gui
 root = tk.Tk()
 
 # Make the window transparent
-root.wm_attributes("-transparentcolor", "darkgreen")
+root.wm_attributes("-transparentcolor", "#454545")
 
 # Remove the title bar
 root.overrideredirect(True)
 
 # Create a style object
 style = Style()
-style.configure("Custom.TFrame", background="darkgreen")
+style.configure("Custom.TFrame", background="#454545")
 
 # Rest of your code remains unchanged...
 
 # Rest of your code remains unchanged...
-
-
-def mahftime():
-    dt = datetime.now()
-    hour = dt.strftime("%H")
-    minute = dt.strftime("%M:%S")
-
-    if int(hour) >= 7 and int(hour) <= 24:
-        mahfhour = int(hour) - 6
-        if mahfhour > 12:
-            mahfhour = mahfhour - 12
-            ltnt = "night"
-        else:
-            mahfhour = mahfhour
-            ltnt = "light"
-    else:
-        mahfhour = int(hour) + 24
-        mahfhour = mahfhour - 12
-        ltnt = "night"
-
-    time = str(mahfhour) + ":" + minute + " " + ltnt
-    string = time
-    lbl.config(text=string)
-    lbl.after(1000, mahftime)
 
 def move_app(e):
     root.geometry(f'+{e.x_root}+{e.y_root}')
@@ -51,20 +27,21 @@ def quitter(e):
     root.quit()
 
 
+
 # create fake title bar
-title_bar = Frame(root, style="Custom.TFrame", relief="raised", border=1)
-title_bar.pack(expand=1, fill=X)
+title_bar = Frame(root, style="Custom.TFrame", relief="raised")#border=0)
+title_bar.pack(expand=1, fill="x")
 
 # bind the title bar
 title_bar.bind("<B1-Motion>", move_app)
 
 # create title text
-title_label = Label(title_bar, text="MahfTime", background="darkgreen", foreground="white")
-title_label.pack(side=LEFT, pady=4)
+title_label = Label(title_bar, text="MahfTime",font=('calibri', 10, 'bold'), background="#454545", foreground="#A1CCD1")
+title_label.pack(side="left")# pady=4)
 
 # create close button on titleBar
-close_label = Label(title_bar, text="  X   ", background="darkgreen", foreground="white", relief="raised", border=1)
-close_label.pack(side=RIGHT, pady=4)
+close_label = Label(title_bar, text="  c   ", background="#454545", foreground="#A1CCD1", relief="raised")# border=0.5)
+close_label.pack(side="right")# pady=0)
 close_label.bind("<Button-1>", quitter)
 
 
